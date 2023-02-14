@@ -503,3 +503,15 @@ sys_pipe(void)
   }
   return 0;
 }
+
+uint sys_trace(void)
+{
+    int mask;
+    argint(0, &mask);
+    if (mask <= 0) {
+        return -1;
+    }
+    struct proc *p = myproc();
+    p -> mask = mask;
+    return 0;
+}
